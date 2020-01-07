@@ -80,4 +80,95 @@ def get_seventh():
 # get_fourth()
 # get_fifth()
 # get_sixth()
-get_seventh()
+# get_seventh()
+
+
+def get_second_first():
+    query = """SELECT DISTINCT job_id FROM employees """
+
+    querry_database(query)
+
+
+def get_second_second():
+    query = """SELECT SUM(salary) as total_salary FROM employees"""
+
+    querry_database(query)
+
+
+def get_second_third():
+    query = """SELECT salary FROM employees
+            ORDER by salary ASC
+            LIMIT 1"""
+
+    querry_database(query)
+
+
+def get_second_fourth():
+    query = """SELECT salary FROM employees
+            ORDER by salary DESC
+            LIMIT 1"""
+
+    querry_database(query)
+
+
+def get_second_fifth():
+    query = """SELECT AVG(salary) as avg_salary, COUNT(employee_id) FROM employees
+            WHERE department_id = 90"""
+
+    querry_database(query)
+
+
+def get_second_sixth():
+    query = """SELECT MIN(salary), MAX(salary), SUM(salary), AVG(salary) FROM employees"""
+
+    querry_database(query)
+
+
+def get_second_seventh():
+    query = """SELECT job_id, COUNT(*)  FROM employees
+               GROUP BY job_id"""
+
+    querry_database(query)
+
+
+def get_second_eigth():
+    query = """SELECT (MAX(salary) - MIN(salary)) as DIF_salary FROM employees"""
+
+    querry_database(query)
+
+
+def get_second_ninth():
+    query = """SELECT department_id, SUM(salary) FROM employees
+               GROUP BY department_id"""
+
+    querry_database(query)
+
+
+def get_second_tenth():
+    query = """SELECT AVG(salary), job_id FROM employees
+                WHERE NOT job_id = 'IT_PROG'
+               GROUP BY job_id"""
+
+    querry_database(query)
+
+
+def get_second_eleventh():
+    query = """SELECT MIN(salary), manager_id, job_id FROM employees
+                GROUP by manager_id
+               """
+
+    querry_database(query)
+
+
+
+# get_second_first()
+# get_second_second()
+# get_second_third()
+# get_second_fourth()
+# get_second_fifth()
+# get_second_sixth()
+# get_second_seventh()
+# get_second_eigth()
+# get_second_ninth()
+# get_second_tenth()
+get_second_eleventh()
