@@ -171,4 +171,61 @@ def get_second_eleventh():
 # get_second_eigth()
 # get_second_ninth()
 # get_second_tenth()
-get_second_eleventh()
+# get_second_eleventh()
+
+
+def create_view():
+    query = """CREATE VIEW IF NOT EXISTS names
+            as
+            SELECT
+                first_name,
+                last_name
+            FROM employees"""
+    querry_database(query)
+    querry_database("SELECT * FROM names")
+
+
+# create_view()
+
+def get_all():
+    query = "SELECT * FROM employees"
+    querry_database(query)
+
+
+def get_3_1():
+    query = """SELECT first_name, last_name, salary  FROM employees
+    WHERE salary > (SELECT salary FROM employees WHERE last_name="Bull")"""
+    querry_database(query)
+
+
+def get_3_2():
+    query = """SELECT first_name, last_name, job_id, manager_id  FROM employees
+    WHERE employee_id IN (SELECT manager_id FROM employees)"""
+    querry_database(query)
+
+
+def get_3_3():
+    query = """SELECT first_name, last_name, salary FROM employees
+    WHERE salary > (SELECT AVG(salary) FROM employees)"""
+    querry_database(query)
+
+
+def get_3_4():
+    query = """SELECT first_name, last_name, salary FROM employees
+        WHERE salary IN (SELECT MIN(salary) FROM employees)"""
+    querry_database(query)
+
+
+def get_3_5():
+    query = """SELECT first_name, last_name, salary, job_id FROM employees
+        WHERE salary > (SELECT AVG(salary) FROM employees WHERE manager_id IN (SELECT department_id from employees))"""
+    querry_database(query)
+
+
+# get_3_2()
+# get_all()
+# get_3_1()
+# get_3_3()
+# get_3_4()
+get_3_5()
+
