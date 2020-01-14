@@ -211,14 +211,35 @@ def get_3_3():
 
 
 def get_3_4():
-    query = """SELECT first_name, last_name, salary FROM employees
-        WHERE salary IN (SELECT MIN(salary) FROM employees)"""
+    query = """SELECT first_name, last_name, salary, job_id FROM employees
+        WHERE salary = (SELECT min_Salary FROM jobs WHERE employees.job_id=jobs.job_id)"""
+    querry_database(query)
+
+
+def show_ids():
+    query = """SELECT Department_ID FROM departments"""
     querry_database(query)
 
 
 def get_3_5():
     query = """SELECT first_name, last_name, salary, job_id FROM employees
-        WHERE salary > (SELECT AVG(salary) FROM employees WHERE manager_id IN (SELECT department_id from employees))"""
+        WHERE department_id IN (SELECT department_id FROM department_name LIKE 'IT%' AND 
+        (salary > SELECT AVG(salary) from employees)"""
+    querry_database(query)
+
+
+def get_3_6():
+    query = """SELECT first_name, salary, job_id FROM employees
+            ORDER BY salary DESC
+            LIMIT 3"""
+    querry_database(query)
+
+
+def get_3_7():
+    query = """SELECT first_name, last_name FROM employees
+                WHERE manager_id IN (SELECT employee_id FROM employees
+                WHERE department_id IN (SELECT department_id FROM departments
+                WHERE location_id IN (SELECT location_id FROM locations WHERE country_id= 'US')))"""
     querry_database(query)
 
 
@@ -228,4 +249,6 @@ def get_3_5():
 # get_3_3()
 # get_3_4()
 get_3_5()
-
+# get_3_6()
+# get_3_7()
+# show_ids()
