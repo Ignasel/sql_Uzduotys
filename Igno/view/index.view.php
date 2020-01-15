@@ -27,19 +27,23 @@
               <th>Kontrolinių darbų vidurkis</th>
               <th>Duomenų formatavimo data</th>
           </tr>
-          <tr>
           <?php foreach ($klase_5b as $mokiniai => $duomenys):?>
               <?php foreach ($duomenys as $duomekat => $vardaas):?>
                 <?php if($duomekat === 'kontroloniu_darbu_ivertinimai'):?>
-                  <?php foreach ($vardaas as $pazymiai=> $pazymys):?>
-                    <td><?=$pazymys;?></td>
+                      <?php $pazymiai_count = count($vardaas);
+                      $pazymiai_sum = array_sum($vardaas);
+                      $avarage = $pazymiai_sum/$pazymiai_count;
+                      ?>
+                      <td><?=$avarage;?></td>
+#                  <?php foreach ($vardaas as $pazymiai=> $pazymys):?>
+
+
                     <?php endforeach;?>
                   <?php else:?>
-                  <td><?=$vardaas;?></span></td>
+                  <tr><td><?=$vardaas;?></span></td> </tr>
                   <?php endif?>
           <?php endforeach;?>
           <?php endforeach;?>
-          </tr>
       </table>
   </div>
 </body>
