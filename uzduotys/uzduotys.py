@@ -248,7 +248,57 @@ def get_3_7():
 # get_3_1()
 # get_3_3()
 # get_3_4()
-get_3_5()
+# get_3_5()
 # get_3_6()
 # get_3_7()
 # show_ids()
+
+
+def get_4_1():
+    query = """SELECT  depart_name, COUNT(depart_name) FROM departments
+                INNER JOIN employees
+                ON departments.Department_ID = employees.department_id
+                GROUP by depart_name"""
+    querry_database(query)
+
+
+def get_4_2():
+    query = """SELECT departments.Department_ID, departments.depart_name, employees.Manager_ID, employees.first_name 
+                FROM departments
+                INNER JOIN employees
+                ON departments.Manager_ID = employees.employee_id"""
+    querry_database(query)
+
+
+def get_4_3():
+    query = """SELECT departments.depart_name, employees.first_name, locations.city 
+                FROM departments
+                INNER JOIN employees
+                ON departments.Manager_ID = employees.employee_id
+                INNER JOIN locations
+                ON departments.Location_ID = locations.location_id"""
+    querry_database(query)
+
+def get_4_4():
+    query = """SELECT job_history.*
+                FROM job_history
+                INNER JOIN employees
+                ON employees.employee_id=job_history.employee_id
+                WHERE (salary >= '10000')
+                """
+    querry_database(query)
+
+def get_4_5():
+    query = """SELECT departments.Department_ID, departments.depart_name, employees.Manager_ID, employees.first_name 
+                FROM departments
+                INNER JOIN employees
+                ON departments.Manager_ID = employees.employee_id"""
+    querry_database(query)
+
+
+# get_4_1()
+# get_4_2()
+# get_4_3()
+# get_4_4()
+get_4_5()
+
